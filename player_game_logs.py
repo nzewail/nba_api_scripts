@@ -20,15 +20,14 @@ def parse():
     return parser.parse_args()
 
 
-def game_log(player_id: int, season: int) -> list:
+def game_log(player_id: int, season: int) -> dict:
     season_format = format_season(season)
-    df = GameLogs(player_id, season=season_format)
-    return df
+    return GameLogs(player_id, season=season_format).api.json['resultSets'][0]
 
 
 def run(player_id: int, season: int, outfile) -> None:
     logging.info(f"getting game logs for: {player_id}")
-    game_logs = GameLogs(player_id, season=season).api.json['resultSets'][0]
+    game_logs = game_log(player_id, season)
     logging.info(f"outputting {game_logs}")
     output(game_logs, outfile)
 
