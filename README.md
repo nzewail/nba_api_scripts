@@ -7,6 +7,12 @@ Initially I was using the [nba_py](https://github.com/seemethere/nba_py) library
 
 The NBA stats API isn't the most well documented so I have found using these client libraries to be helpful in navigating it.
 
+## Requirements
+
+```
+pip3 install -r requirements.txt
+```
+
 ## Scripts
 
 Just note that these scripts are written to only pull regular season stats and not playoff or preseason stats. Also generally the `--all` option will take a lot longer given that it will have to circle through about 500 API requests because it is cycling through every player.  
